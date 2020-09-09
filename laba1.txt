@@ -8,17 +8,17 @@ namespace laba1
         {
             Console.WriteLine("Enter numbers(Q to end):");
             Massiv mass=new Massiv();
-            while(true)
+             while (true)
             {
-                ConsoleKeyInfo key = Console.ReadKey(true);
-                if (key.Key == ConsoleKey.Q) break;
+                object s = Console.ReadLine();
+                if (s.ToString() == "Q" || s.ToString() == "q") break;
                 try
                 {
-                    mass.Add(Convert.ToDouble(Console.ReadLine()));
+                    mass.Add(Convert.ToDouble(s));
                 }
                 catch
                 {
-                   Console.WriteLine("Enter correct number");
+                   Console.WriteLine("Enter appropriate number");
                 }
 
             }
