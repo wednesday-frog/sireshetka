@@ -18,7 +18,7 @@ namespace laba1
                 }
                 catch
                 {
-                   Console.WriteLine("Enter integer number");
+                   Console.WriteLine("Enter correct number");
                 }
 
             }
