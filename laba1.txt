@@ -1,0 +1,157 @@
+﻿using System;
+
+namespace laba1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter numbers(Q to end):");
+            Massiv mass=new Massiv();
+            while(true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                if (key.Key == ConsoleKey.Q) break;
+                try
+                {
+                    mass.Add(Convert.ToDouble(Console.ReadLine()));
+                }
+                catch
+                {
+                   Console.WriteLine("Enter integer number");
+                }
+
+            }
+
+            mass.mas();
+            mass.Max();
+            mass.Min();
+            mass.Sum();
+            mass.Mul();
+            mass.Reverse();
+            Console.WriteLine("Enter string");
+            if (isPolindrom(Console.ReadLine())) Console.WriteLine("Eto polindrom!");
+            else Console.WriteLine("Eto ne polindrom");
+        }
+
+        static bool isPolindrom(string str)
+        {
+            bool ka=true;
+            string p = null;
+            for(int i =0;i<str.Length; i++)
+            {
+                if (str[i].Equals(" ") || str[i].Equals(",") || str[i].Equals(".") || str[i].Equals("!")) continue;
+                p += str[i];
+            }
+            for(int i = 0; i < (p.Length)/2; i++)
+            {
+                if (p[i] == p[p.Length - i - 1]) continue;
+                ka = false;
+            }
+            return ka;
+        }
+    }
+
+    class Massiv
+    {
+        private double[] el;
+        public Massiv()
+        {
+            el = new double[0];
+        }
+        public void Add(double data)
+        {
+            double[] newMas = new double[el.Length + 1];
+            for (int i = 0; i < el.Length; i++)
+            {
+                newMas[i] = el[i];
+            }
+            newMas[el.Length] = data;
+            el = newMas;
+        }
+
+        public void mas()
+        {
+            for (int i = 0; i < el.Length; i++)
+            {
+                Console.Write(el[i] + " ");
+            }
+            Console.Write("\n");
+        }
+
+        public void Sum()
+        {
+            double sum = 0;
+            for (int i = 0; i < el.Length; i++)
+            {
+                sum += el[i];
+            }
+            Console.WriteLine("Sum:" + sum);
+        }
+
+        public void Mul()
+        {
+            double sum = 1;
+            for (int i = 0; i < el.Length; i++)
+            {
+                sum *= el[i];
+            }
+            Console.WriteLine("Mul:" + sum);
+        }
+        public void Max()
+        {
+            double[] temp = new double[el.Length + 1];
+            double musorka=el[0];
+            temp = el;
+            for (int i = 0; i < el.Length - 1; i++)
+            {
+                for (int j = i + 1; j < el.Length; j++)
+                {
+                    if (el[i] > temp[j])
+                    {
+                        musorka = el[i];
+                    }
+                }
+            }
+            Console.WriteLine("Max:" + musorka);
+        }
+
+        public void Min()
+        {
+            double[] temp = new double[el.Length + 1];
+            double musorka=el[0];
+            temp = el;
+            for (int i = 0; i < el.Length - 1; i++)
+            {
+                for (int j = i + 1; j < el.Length; j++)
+                {
+                    if (el[i] < temp[j])
+                    {
+                        musorka = el[i];
+                    }
+                }
+            }
+            Console.WriteLine("Min:" + musorka);
+        }
+
+
+        public void Reverse()
+        {
+            double[] temp = new double[el.Length];
+            double musorka;
+            for (int i = 0; i < (el.Length) / 2; i++)
+            {
+                musorka = el[i];
+                el[i] = el[el.Length - i - 1];
+                el[el.Length - i - 1] = musorka;
+            }
+            Console.Write("Reverse:");
+            for (int i = 0; i < el.Length; i++)
+            {
+                Console.Write(el[i] + " ");
+            }
+            Console.Write("\n");
+        }
+
+    }
+}
