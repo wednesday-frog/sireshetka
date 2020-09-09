@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace laba1
 {
@@ -43,6 +43,7 @@ namespace laba1
                 if (str[i].Equals(' ') || str[i].Equals(',') || str[i].Equals('.') || str[i].Equals('!')) continue;
                 p += str[i];
             }
+            Console.WriteLine(p);
             for(int i = 0; i < (p.Length)/2; i++)
             {
                 if (p[i] == p[p.Length - i - 1]) continue;
@@ -100,36 +101,28 @@ namespace laba1
         }
         public void Max()
         {
-            double[] temp = new double[el.Length + 1];
-            double musorka=el[0];
-            temp = el;
+            double musorka = el[0];
             for (int i = 0; i < el.Length - 1; i++)
             {
-                for (int j = i + 1; j < el.Length; j++)
+                if (el[i] > el[i + 1])
                 {
-                    if (el[i] > temp[j])
-                    {
-                        musorka = el[i];
-                    }
+                    musorka = el[i];
                 }
+                else musorka = el[i + 1];
             }
             Console.WriteLine("Max:" + musorka);
         }
 
         public void Min()
         {
-            double[] temp = new double[el.Length + 1];
             double musorka=el[0];
-            temp = el;
             for (int i = 0; i < el.Length - 1; i++)
             {
-                for (int j = i + 1; j < el.Length; j++)
+                if (el[i] < el[i + 1])
                 {
-                    if (el[i] < temp[j])
-                    {
-                        musorka = el[i];
-                    }
+                    musorka = el[i];
                 }
+                else musorka = el[i + 1];
             }
             Console.WriteLine("Min:" + musorka);
         }
