@@ -40,7 +40,7 @@ namespace laba1
             string p = null;
             for(int i =0;i<str.Length; i++)
             {
-                if (str[i].Equals(" ") || str[i].Equals(",") || str[i].Equals(".") || str[i].Equals("!")) continue;
+                if (str[i].Equals(' ') || str[i].Equals(',') || str[i].Equals('.') || str[i].Equals('!')) continue;
                 p += str[i];
             }
             for(int i = 0; i < (p.Length)/2; i++)
