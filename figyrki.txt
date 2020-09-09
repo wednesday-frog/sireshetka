@@ -21,8 +21,13 @@ namespace laba1
                 a = A;
                 b = B;
             }
-            else throw new Exception("Enter positive numbers");
+        
         }     
+        public bool Equals(Rectangle rec)
+        {
+            if (this.a == rec.a && this.b == rec.b) return true;
+            else return false;
+        }
         public override double Area()
         {
             return a * b;
@@ -41,8 +46,7 @@ namespace laba1
 
         public Circle(double R) 
         {
-            if (R > 0) r = R;
-            else throw new Exception("Enter positive number");   
+            if (R > 0)r = R;   
         }
         public override double Area()
         {
@@ -52,11 +56,19 @@ namespace laba1
         {
             return 2*pi*r;
         }
+
+        public bool Equals(Circle cir)
+        {
+            if (this.r == cir.r) return true;
+            else return false;
+        }
     }
       
 
     class Program
     {
+
+        
         static void Main(string[] args)
         {
             Start:
@@ -71,33 +83,29 @@ namespace laba1
                         double a = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine("Enter width:");
                         double b = Convert.ToDouble(Console.ReadLine());
-                        try
-                        {
-                            Figure rectangle = new Rectangle(a, b);
+                        if (a <= 0 || b <= 0) { Console.WriteLine("Enter positive number"); goto case "R"; }
+                            Rectangle rectangle = new Rectangle(a, b);
                             Console.WriteLine($"Area = {rectangle.Area()}");
-                            Console.WriteLine($"Perimetr = {rectangle.Perimetr()}");
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                            goto case "R";
-                        }
+                            Console.WriteLine($"Perimetr = {rectangle.Perimetr()}");  
+                        Console.WriteLine("Enter 2th rectangle parameters to compare.Enter higth:");
+                        a = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter width:");
+                        b = Convert.ToDouble(Console.ReadLine());
+                        Rectangle rectangle1 = new Rectangle(a, b);
+                        if (rectangle.Equals(rectangle1)) Console.WriteLine("Equals!");
+                        else Console.WriteLine("Not equals");  
                         goto Start;
                     case "C":
                         Console.WriteLine("Enter radius:");
                         double r = Convert.ToDouble(Console.ReadLine());
-                        try
-                        {
                             Circle circle = new Circle(r);
                             Console.WriteLine($"Area = {circle.Area()}");
                             Console.WriteLine($"Perimetr = {circle.Perimetr()}");
-                        }
-
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                            goto case "C";
-                        }
+                        Console.WriteLine("Enter 2th circle radius to compare:");
+                        r = Convert.ToDouble(Console.ReadLine());                     
+                        Circle circle1 = new Circle(r);
+                        if (circle.Equals(circle1)) Console.WriteLine("Equals!");
+                        else Console.WriteLine("Not equals");
                         goto Start;
                     case "E":
                         return;
