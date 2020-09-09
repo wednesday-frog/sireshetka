@@ -1,0 +1,114 @@
+﻿using System;
+
+namespace laba1
+{
+    public abstract class Figure
+    {
+        
+        public abstract double Area();
+        public abstract double Perimetr();
+
+    }
+
+    class Rectangle : Figure
+    {
+        public readonly double a;
+        public readonly double b;
+        public Rectangle(double A, double B) 
+        {
+            if (A > 0 && B > 0)
+            {
+                a = A;
+                b = B;
+            }
+            else throw new Exception("Enter positive numbers");
+        }     
+        public override double Area()
+        {
+            return a * b;
+        }
+
+        public override double Perimetr()
+        {
+            return a * 2 + b * 2;
+        }
+    }
+
+    class Circle : Figure
+    {
+        public readonly double r;
+        private double pi = 3.14;
+
+        public Circle(double R) 
+        {
+            if (R > 0) r = R;
+            else throw new Exception("Enter positive number");   
+        }
+        public override double Area()
+        {
+            return 2 * pi * Math.Pow(r, 2);
+        }
+        public override double Perimetr()
+        {
+            return 2*pi*r;
+        }
+    }
+      
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Start:
+            Console.WriteLine("Write R to create Ractangle or C to create Circle or E to exit");
+            string type = Console.ReadLine();
+            if (type == "R" || type == "C" || type == "E")
+            {
+                switch (type)
+                {
+                    case "R":
+                        Console.WriteLine("Enter higth:");
+                        double a = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter width:");
+                        double b = Convert.ToDouble(Console.ReadLine());
+                        try
+                        {
+                            Figure rectangle = new Rectangle(a, b);
+                            Console.WriteLine($"Area = {rectangle.Area()}");
+                            Console.WriteLine($"Perimetr = {rectangle.Perimetr()}");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            goto case "R";
+                        }
+                        goto Start;
+                    case "C":
+                        Console.WriteLine("Enter radius:");
+                        double r = Convert.ToDouble(Console.ReadLine());
+                        try
+                        {
+                            Circle circle = new Circle(r);
+                            Console.WriteLine($"Area = {circle.Area()}");
+                            Console.WriteLine($"Perimetr = {circle.Perimetr()}");
+                        }
+
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            goto case "C";
+                        }
+                        goto Start;
+                    case "E":
+                        return;
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("Choose available variant");
+                goto Start;
+            }
+        }
+    }
+}
