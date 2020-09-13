@@ -71,11 +71,10 @@ namespace laba1
 
         static void Main(string[] args)
         {
-        Start:
-            Console.WriteLine("Write R to create Ractangle or C to create Circle or E to exit");
             while(true)
-            { 
-            string type = Console.ReadLine();
+            {
+                Console.WriteLine("Write R to create Ractangle or C to create Circle or E to exit");
+                string type = Console.ReadLine();
                 if (type == "R" || type == "C" || type == "E")
                 {
                     switch (type)
@@ -96,7 +95,7 @@ namespace laba1
                             Rectangle rectangle1 = new Rectangle(a, b);
                             if (rectangle.Equals(rectangle1)) Console.WriteLine("Equals!");
                             else Console.WriteLine("Not equals");
-                            goto Start;
+                            break;
                         case "C":
                             Console.WriteLine("Enter radius:");
                             double r = Convert.ToDouble(Console.ReadLine());
@@ -108,7 +107,7 @@ namespace laba1
                             Circle circle1 = new Circle(r);
                             if (circle.Equals(circle1)) Console.WriteLine("Equals!");
                             else Console.WriteLine("Not equals");
-                            goto Start;
+                            break;
                         case "E":
                             return;
 
@@ -119,4 +118,3 @@ namespace laba1
         }
     }
 }
-
