@@ -1,0 +1,69 @@
+using System;
+using System.IO;
+namespace Nechto
+{
+    class Program
+    { 
+        static void Main(string[] args)
+        { 
+            string path = "Q:\\WordsStockRus.txt";
+            Random rnd = new Random();
+            int z=0;
+            char[] s=new char[6];
+            string str=null;
+            int podosinovik = rnd.Next(0, 11650);
+                StreamReader dictionary = new StreamReader(path);
+                while (z != podosinovik)
+                {
+                str = dictionary.ReadLine();
+                z++;
+                }
+            dictionary.Close();
+
+            //Console.WriteLine(str);
+            Console.WriteLine("Я загадал!");
+            Console.WriteLine("У вас есть 6 попыток на угадывание букв");
+
+            for (int i = 0; i < 6; i++)
+            {
+                s[i] = char.Parse(Console.ReadLine());
+                
+                    foreach (char k in str)
+                    {
+                        switch (i) 
+                        {
+                            case 0:
+                                
+                                Console.Write(k==s[i]? $"{s[i]}" : "-");
+                                break;
+                            case 1:
+                                
+                                Console.Write(k==s[i] ? $"{s[i]}" : k==s[i-1] ? $"{s[i - 1]}" : "-");
+                                break;
+                            case 2: 
+                                Console.Write(k==s[i] ? $"{s[i]}" : k==s[i-1] ? $"{s[i - 1]}" : k==s[i-2] ? $"{s[i - 2]}": "-");
+                                break;
+                            case 3:
+                                
+                                Console.Write(k==s[i] ? $"{s[i]}" : k==s[i-1] ? $"{s[i - 1]}" : k==s[i-2] ? $"{s[i - 2]}" : k==s[i-3] ? $"{s[i - 3]}": "-");
+                                break;
+                            case 4:
+                                Console.Write(k==s[i] ? $"{s[i]}" : k==s[i-1] ? $"{s[i - 1]}" : k==s[i-2] ? $"{s[i - 2]}" : k==s[i-3] ? $"{s[i - 3]}" : k==s[i-4] ? $"{s[i - 4]}": "-");
+                                break;
+                            case 5:                              
+                                Console.Write(k == s[i] ? $"{s[i]}" : k == s[i - 1] ? $"{s[i - 1]}" : k == s[i - 2] ? $"{s[i - 2]}" : k == s[i - 3] ? $"{s[i - 3]}" : k == s[i - 4] ? $"{s[i - 4]}" : k == s[i - 5] ? $"{s[i - 5]}" : "-");
+                                break;
+                            case 6:        
+                                Console.Write(k == s[i] ? $"{s[i]}" : k == s[i - 1] ? $"{s[i - 1]}" : k == s[i - 2] ? $"{s[i - 2]}" : k == s[i - 3] ? $"{s[i - 3]}" : k == s[i - 4] ? $"{s[i - 4]}" : k == s[i - 5] ? $"{s[i - 5]}" : k == s[i - 6] ? $"{s[i - 6]}" : "-");
+                                break;
+                        }
+                    }
+                    Console.Write("\n");           
+            }
+            Console.WriteLine("Попытки кончились, пишите слово");
+            string pobeda__ili_porazhenie = Console.ReadLine();
+            if (pobeda__ili_porazhenie == str) Console.WriteLine("ООооО да");
+            else Console.WriteLine($"Сегодня не ваш день, вот мое слово: {str}. Ха-ха-ха");
+            }
+        }       
+    }
