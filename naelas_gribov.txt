@@ -2,6 +2,7 @@ using System;
 using System.IO;
 namespace Nechto
 {
+//все что тут происходит - шутка
     class Program
     { 
         static void Main(string[] args)
