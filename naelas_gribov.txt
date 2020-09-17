@@ -6,7 +6,7 @@ namespace Nechto
     { 
         static void Main(string[] args)
         { 
-            string path = "Q:\\WordsStockRus.txt";
+            string path = "Q:\\WordsStockRus.txt";//файл надо скачать и путь поменять
             Random rnd = new Random();
             int z=0;
             char[] s=new char[6];
@@ -19,8 +19,6 @@ namespace Nechto
                 z++;
                 }
             dictionary.Close();
-
-            //Console.WriteLine(str);
             Console.WriteLine("Я загадал!");
             Console.WriteLine("У вас есть 6 попыток на угадывание букв");
 
