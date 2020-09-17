@@ -60,7 +60,7 @@ namespace Nechto
             }
             Console.WriteLine("Попытки кончились, пишите слово");
             string pobeda__ili_porazhenie = Console.ReadLine();
-            if (pobeda__ili_porazhenie == str) Console.WriteLine("ООооО да");
+            if (pobeda__ili_porazhenie == str) Console.WriteLine("Это победа");
             else Console.WriteLine($"Сегодня не ваш день, вот мое слово: {str}. Ха-ха-ха");
             }
         }       
