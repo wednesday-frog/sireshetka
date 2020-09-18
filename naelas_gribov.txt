@@ -73,7 +73,7 @@ namespace Nechto
                 {
                     Console.BackgroundColor = ConsoleColor.DarkGreen;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write("Верно!");
+                    Console.Write("Верно! ＼('о')／ (*-*) ＼(＾-＾)／ ");
                     Console.ResetColor();
                     Console.Write(" Сыграем еще?[д/н]\n");
                     var = Console.ReadLine();
