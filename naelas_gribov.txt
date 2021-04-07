@@ -83,7 +83,7 @@ namespace Nechto
                 {
                     Console.BackgroundColor = ConsoleColor.DarkRed;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write($"Сегодня не ваш день, вот мое слово: {str}");
+                    Console.Write($"Вы проиграли, вот мое слово: {str}");
                     Console.ResetColor();
                     Console.Write(" Сыграем еще?[д/н]\n");
                     var = Console.ReadLine();
